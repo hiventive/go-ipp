@@ -351,6 +351,7 @@ const (
 	AttributeJobKilobyteOctets      = "job-k-octets"
 	AttributeNumberOfDocuments      = "number-of-documents"
 	AttributeJobOriginatingUserName = "job-originating-user-name"
+	AttributeJobPrintScaling        = "print-scaling"
 )
 
 // Default attributes
@@ -361,7 +362,7 @@ var (
 		AttributePrinterUriSupported, AttributeDeviceURI, AttributePrinterIsShared}
 	DefaultJobAttributes = []string{AttributeJobID, AttributeJobName, AttributePrinterURI, AttributeJobState, AttributeJobStateReason,
 		AttributeJobHoldUntil, AttributeJobMediaProgress, AttributeJobKilobyteOctets, AttributeNumberOfDocuments, AttributeCopies,
-		AttributeJobOriginatingUserName}
+		AttributeJobOriginatingUserName, AttributeJobPrintScaling}
 )
 
 // Attribute to tag mapping
@@ -403,6 +404,7 @@ var (
 		AttributePrinterResolution:      TagResolution,
 		AttributePrinterState:           TagEnum,
 		AttributePrinterStateReasons:    TagKeyword,
+		AttributeJobPrintScaling:        TagKeyword,
 		AttributePrinterURI:             TagUri,
 		AttributePurgeJobs:              TagBoolean,
 		AttributeRequestedAttributes:    TagKeyword,
