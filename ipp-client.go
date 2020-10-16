@@ -178,7 +178,7 @@ func (c *IPPClient) PrintDocuments(docs []Document, printer string, jobAttribute
 }
 
 // PrintJob prints a document using a Print-Job operation. custom job settings can be specified via the jobAttributes parameter
-func (c *IPPClient) PrintJob(doc Document, printer string, jobAttributes map[string]interface{}) (int, error) {
+func (c *IPPClient) PrintJob(doc Document, printer string, jobAttributes map[string]interface{}) (*Response, int, error) {
 	printerURI := c.getPrinterUri(printer)
 
 	req := NewRequest(OperationPrintJob, 1)
@@ -200,16 +200,16 @@ func (c *IPPClient) PrintJob(doc Document, printer string, jobAttributes map[str
 
 	resp, err := c.SendRequest(c.getHttpUri("printers", printer), req, nil)
 	if err != nil {
-		return -1, err
+		return nil, -1, err
 	}
 
 	if len(resp.JobAttributes) == 0 {
-		return 0, errors.New("server doesn't returned a job id")
+		return nil, 0, errors.New("server doesn't returned a job id")
 	}
 
 	jobID := resp.JobAttributes[0][AttributeJobID][0].Value.(int)
 
-	return jobID, nil
+	return resp, jobID, nil
 }
 
 // PrintFile prints a local file on the file system. custom job settings can be specified via the jobAttributes parameter
