@@ -412,6 +412,6 @@ var (
 		AttributeWhichJobs:              TagKeyword,
 		AttributeFirstJobID:             TagInteger,
 		AttributeStatusMessage:          TagText,
-		AttributeLimit:                  TagInteger,=
+		AttributeLimit:                  TagInteger,
 	}
 )
